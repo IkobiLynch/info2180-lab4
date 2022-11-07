@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.title_container{
+    background-color: aqua;
+    padding: 20px 100px 20px 100px;
+    margin-bottom: 20px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#search {
+    
+    padding: 10px 50px 10px 50px;
+}
+
+.btn {
+    
+    padding: 10px 30px 10px 30px;
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+}
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}

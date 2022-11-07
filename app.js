@@ -2,21 +2,17 @@
 
 window.onload = function(){
     var search = document.getElementsByClassName("btn");
-    var results = document.getElementsByClassName("results")
-    var corsProxy = "https://cors-anywhere.herokuapp.com/";
+    var result = document.getElementsByClassName("result")
+    
 
     search[0].addEventListener("click", function(event){
         event.preventDefault();
-        var url = "http://localhost/info2180-lab4/superheroes.php";
-        // fetch (url)
-        //     .then(Result => Result.json())
-        //     .then(string => {
-        //         console.log(string);
-    
-        //     })
-        //     .catch(errorMsg => { console.log(errorMsg); })
+        var url = "http://localhost/info2180-lab4/superheroes.php?query=";
 
-        fetch (url)
+        let query = sanitize();
+        let search_request = new URL(url + query);
+
+        fetch (search_request)
                 .then(response => {
                     if (response.ok){
                         return response.text()
@@ -25,11 +21,22 @@ window.onload = function(){
                     }
                 })
                 .then (function(data){
-                    window.alert(data);
+                    result[0].innerHTML = data;
                 })
                 .catch (error => console.log('There was an error: ' + error))
 
     });
 
  
+}
+
+function sanitize(){
+    let query = document.getElementById("search").value;
+    if(query != "" && query.includes("<") || query.includes(">") || query.includes("*")){
+        alert("The characters < and > are not allowed");
+        window.location.reload();
+    }
+    else{
+        return query
+    }
 }
